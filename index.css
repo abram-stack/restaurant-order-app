@@ -1,6 +1,8 @@
+*{
+  box-sizing: border-box;
+}
 body{
   margin: 0;
-  box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
 }
 
@@ -17,8 +19,10 @@ header h1, header p{
   margin-top: 0;
   padding-left: 10px;
 }
+
 main{
   background-color: #f5f4f6;
+  height: 100vh;
 }
 
 button{
@@ -26,8 +30,13 @@ button{
   color: #f5f4f6;
   width: 100%;
   border-radius: 5px;
+  border: none;
   padding: 20px 25px;
   font-size: 16px;
+  cursor: pointer;
+}
+button:hover{
+  background-color: #7b9e87;
 }
 
 .place-order{
@@ -55,7 +64,7 @@ button{
   margin-bottom: 20px;
 }
 .item{
-  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
   padding: 20px 0 0 0;
   width: 100%;
   margin: 15px 0;
@@ -95,4 +104,56 @@ i{
 }
 .hidden{
   display: none;
+}
+.modal{
+  display: none;
+  /* display: block; */
+  width: 524px;
+  height: 402px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0px 0px 6px 2px #666;
+}
+
+.close-modal-btn-container{
+  text-align: right;
+  margin: 10px;
+}
+.close-modal-btn{
+  cursor: pointer;
+}
+
+.modal-inner{
+  text-align: center;
+  padding: 20px;
+}
+.pay-btn{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+input{
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #212529;
+  width: 100%;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.banner{
+  margin: 50px 50px;
+  background-color: #b6be9c;
+}
+
+.banner-inner{
+  padding: 10px 0;
+  text-align: center;
+}
+.banner-inner h2{
+  color: #5e747f;
 }

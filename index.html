@@ -32,6 +32,27 @@
         
       </div>
     </div>
+
+    <div class="banner hidden" id="banner">
+      
+      <!--  -->
+    </div>
+    <!-- card details -->
+    <div class="modal" id="modal">
+      <div class="close-modal-btn-container">
+        <div class="close-modal-btn" id="close-modal-btn">X</div>
+      </div>
+      <div class="modal-inner" id="modal-inner">
+        <h2>Enter card details</h2>
+        <form class="card-detail-form" id="card-detail-form">
+          <input type="text" id="userName" name="fullName" placeholder="Enter your name" required/>
+          <input type="text" name="cardNumber" placeholder="Enter card number" required/>
+          <input type="text" name="securityCardNumber" placeholder="Enter CVV" required/>
+          <button type="submit" class="pay-btn" id="pay-btn">Pay</button>
+        </form>
+      </div>
+    </div>
+    
   </main>
   <script src="index.js" type="module"></script>
 </body>

@@ -1,12 +1,48 @@
 import { menuArray } from './data.js'
 
 const orderArray = []
+const orderContainer = document.getElementById('place-order')
 
 document.addEventListener('click', function (e) {
   if (e.target.dataset.add)
     handleAddItem(e.target.dataset.add);
-  
+  else if (e.target.id === 'order-btn')
+    handleProceedOrder()  
 })
+
+function handleProceedOrder() {
+  const modalEl = document.getElementById('modal')
+  const closeBtn = document.getElementById('close-modal-btn')
+  const cardDetailForm = document.getElementById('card-detail-form')
+  const userNameEl = document.getElementById('userName')
+  const banner = document.getElementById('banner')
+
+  modalEl.style.display = 'block'
+  closeBtn.addEventListener('click', function () {
+    modalEl.style.display = 'none'
+  })
+
+  cardDetailForm.addEventListener('submit', function (e) {
+    e.preventDefault()
+
+    
+    // close the modal
+    // close place order
+    // display banner
+    // clear input txt
+
+    modalEl.style.display = 'none'
+    orderContainer.classList.add('hidden')
+    banner.classList.remove('hidden')
+    banner.innerHTML = `
+      <div class="banner-inner">
+        <h2>Thanks, ${userNameEl.value}! Your order is on its way!</h2>
+      </div>
+    `
+    userNameEl.value = ''
+  })
+}
+
 
 function handleAddItem(itemId) {
   const itemObj = menuArray.filter(function (item) {
@@ -15,7 +51,6 @@ function handleAddItem(itemId) {
   orderArray.unshift(itemObj);
 
   renderItems()
-  console.log(orderArray)
 
 }
 
@@ -38,7 +73,6 @@ function getItemHtml() {
     `
   })
   
-
   return stringHtml; 
 }
 
@@ -46,7 +80,6 @@ function getOrderHtml() {
   let orderHtml = ''
   let total = 0;
     //take control the order container, set hidden to visible
-    const orderContainer = document.getElementById('place-order')
   if (orderArray.length > 0) {
    orderContainer.classList.remove('hidden') 
 
