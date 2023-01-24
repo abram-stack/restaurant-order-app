@@ -14,11 +14,14 @@ function handleAddItem(itemId) {
   })[0];
   orderArray.unshift(itemObj);
 
-  // console.log(orderArray);
+  renderItems()
+  console.log(orderArray)
+
 }
+
 function getItemHtml() {
   let stringHtml = ''
-
+  
   menuArray.forEach(menu =>  {
     stringHtml += `
       <div class="item">
@@ -34,12 +37,48 @@ function getItemHtml() {
       </div>
     `
   })
+  
+
   return stringHtml; 
 }
 
+function getOrderHtml() {
+  let orderHtml = ''
+  let total = 0;
+    //take control the order container, set hidden to visible
+    const orderContainer = document.getElementById('place-order')
+  if (orderArray.length > 0) {
+   orderContainer.classList.remove('hidden') 
+
+    orderArray.forEach(order => { 
+      orderHtml += `
+         <div class="order">
+           <div class="order-items">${order.name}</div>
+           <div class="order-items">$${order.price}</div>
+         </div>
+      `
+      total += order.price;
+    })
+
+    orderHtml += `
+        <div class="order-price">
+          <div>Total Price:</div>
+          <div>${total}</div>
+        </div>
+        <button id="order-btn">Complete order</button>
+      `
+    return orderHtml; 
+  }
+  else
+    return orderHtml += ''
+}
+
+
 function renderItems() { 
-  // document.getElementById('menu').innerHTML = getItemHtml()
   document.getElementById('menu').innerHTML = getItemHtml()
+  document.getElementById('order-container').innerHTML = getOrderHtml()
 }
 
 renderItems()
+
+console.log('call', getOrderHtml());
